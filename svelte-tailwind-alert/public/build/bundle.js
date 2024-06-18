@@ -420,130 +420,107 @@ var app = (function () {
 
     const file$1 = "src/components/Alert.svelte";
 
-    // (20:0) {#if show}
+    // (37:0) {#if show}
     function create_if_block(ctx) {
     	let div2;
     	let div1;
-    	let div0;
-    	let p0;
-    	let t0_value = /*type*/ ctx[0].charAt(0).toUpperCase() + /*type*/ ctx[0].slice(1) + "";
     	let t0;
+    	let div0;
+    	let h3;
     	let t1;
-    	let p1;
     	let t2;
+    	let p;
     	let t3;
+    	let button;
+    	let svg;
+    	let path;
     	let div2_class_value;
-    	let if_block = /*closeable*/ ctx[2] && create_if_block_1(ctx);
+    	let mounted;
+    	let dispose;
+    	let if_block = /*icon*/ ctx[3] && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
     			div2 = element("div");
     			div1 = element("div");
-    			div0 = element("div");
-    			p0 = element("p");
-    			t0 = text(t0_value);
-    			t1 = space();
-    			p1 = element("p");
-    			t2 = text(/*message*/ ctx[1]);
-    			t3 = space();
     			if (if_block) if_block.c();
-    			attr_dev(p0, "class", "font-bold");
-    			add_location(p0, file$1, 23, 8, 627);
-    			add_location(p1, file$1, 24, 8, 707);
-    			add_location(div0, file$1, 22, 6, 613);
-    			attr_dev(div1, "class", "flex justify-between items-center");
-    			add_location(div1, file$1, 21, 4, 559);
-    			attr_dev(div2, "class", div2_class_value = "relative border-l-4 p-4 mb-4 rounded-md shadow-md " + /*alertClasses*/ ctx[5][/*type*/ ctx[0]]);
-    			attr_dev(div2, "role", "alert");
-    			add_location(div2, file$1, 20, 2, 457);
+    			t0 = space();
+    			div0 = element("div");
+    			h3 = element("h3");
+    			t1 = text(/*title*/ ctx[1]);
+    			t2 = space();
+    			p = element("p");
+    			t3 = space();
+    			button = element("button");
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			attr_dev(h3, "class", "text-white font-bold");
+    			add_location(h3, file$1, 47, 8, 1565);
+    			attr_dev(p, "class", "text-gray-400");
+    			add_location(p, file$1, 48, 8, 1619);
+    			add_location(div0, file$1, 46, 6, 1551);
+    			attr_dev(div1, "class", "flex items-center");
+    			add_location(div1, file$1, 38, 4, 1254);
+    			attr_dev(path, "stroke-linecap", "round");
+    			attr_dev(path, "stroke-linejoin", "round");
+    			attr_dev(path, "stroke-width", "2");
+    			attr_dev(path, "d", "M6 18L18 6M6 6l12 12");
+    			add_location(path, file$1, 53, 8, 1917);
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "class", "h-4 w-4");
+    			attr_dev(svg, "fill", "none");
+    			attr_dev(svg, "viewBox", "0 0 24 24");
+    			attr_dev(svg, "stroke", "currentColor");
+    			add_location(svg, file$1, 52, 6, 1798);
+    			attr_dev(button, "class", "text-gray-400 hover:text-gray-300 bg-transparent border-none");
+    			add_location(button, file$1, 51, 4, 1692);
+    			attr_dev(div2, "class", div2_class_value = "bg-gray-800 text-white p-3 rounded-md mb-2 flex justify-between items-start " + /*alertClasses*/ ctx[6][/*type*/ ctx[0]]);
+    			add_location(div2, file$1, 37, 2, 1139);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div1);
-    			append_dev(div1, div0);
-    			append_dev(div0, p0);
-    			append_dev(p0, t0);
-    			append_dev(div0, t1);
-    			append_dev(div0, p1);
-    			append_dev(p1, t2);
-    			append_dev(div1, t3);
     			if (if_block) if_block.m(div1, null);
+    			append_dev(div1, t0);
+    			append_dev(div1, div0);
+    			append_dev(div0, h3);
+    			append_dev(h3, t1);
+    			append_dev(div0, t2);
+    			append_dev(div0, p);
+    			p.innerHTML = /*message*/ ctx[2];
+    			append_dev(div2, t3);
+    			append_dev(div2, button);
+    			append_dev(button, svg);
+    			append_dev(svg, path);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*closeAlert*/ ctx[5], false, false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*type*/ 1 && t0_value !== (t0_value = /*type*/ ctx[0].charAt(0).toUpperCase() + /*type*/ ctx[0].slice(1) + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*message*/ 2) set_data_dev(t2, /*message*/ ctx[1]);
-
-    			if (/*closeable*/ ctx[2]) {
+    			if (/*icon*/ ctx[3]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
     					if_block = create_if_block_1(ctx);
     					if_block.c();
-    					if_block.m(div1, null);
+    					if_block.m(div1, t0);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty & /*type*/ 1 && div2_class_value !== (div2_class_value = "relative border-l-4 p-4 mb-4 rounded-md shadow-md " + /*alertClasses*/ ctx[5][/*type*/ ctx[0]])) {
+    			if (dirty & /*title*/ 2) set_data_dev(t1, /*title*/ ctx[1]);
+    			if (dirty & /*message*/ 4) p.innerHTML = /*message*/ ctx[2];
+    			if (dirty & /*type*/ 1 && div2_class_value !== (div2_class_value = "bg-gray-800 text-white p-3 rounded-md mb-2 flex justify-between items-start " + /*alertClasses*/ ctx[6][/*type*/ ctx[0]])) {
     				attr_dev(div2, "class", div2_class_value);
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
     			if (if_block) if_block.d();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block.name,
-    		type: "if",
-    		source: "(20:0) {#if show}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (27:6) {#if closeable}
-    function create_if_block_1(ctx) {
-    	let button;
-    	let svg;
-    	let path;
-    	let mounted;
-    	let dispose;
-
-    	const block = {
-    		c: function create() {
-    			button = element("button");
-    			svg = svg_element("svg");
-    			path = svg_element("path");
-    			attr_dev(path, "fill-rule", "evenodd");
-    			attr_dev(path, "d", "M6.293 6.293a1 1 0 011.414 0L10 8.586l2.293-2.293a1 1 0 111.414 1.414L11.414 10l2.293 2.293a1 1 0 01-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 01-1.414-1.414L8.586 10 6.293 7.707a1 1 0 010-1.414z");
-    			attr_dev(path, "clip-rule", "evenodd");
-    			add_location(path, file$1, 29, 12, 929);
-    			attr_dev(svg, "class", "h-6 w-6");
-    			attr_dev(svg, "fill", "currentColor");
-    			attr_dev(svg, "viewBox", "0 0 20 20");
-    			add_location(svg, file$1, 28, 10, 855);
-    			attr_dev(button, "class", "text-gray-500 hover:text-gray-700 ml-4");
-    			add_location(button, file$1, 27, 8, 767);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, button, anchor);
-    			append_dev(button, svg);
-    			append_dev(svg, path);
-
-    			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*closeAlert*/ ctx[4], false, false, false, false);
-    				mounted = true;
-    			}
-    		},
-    		p: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(button);
     			mounted = false;
     			dispose();
     		}
@@ -551,9 +528,56 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(37:0) {#if show}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (40:6) {#if icon}
+    function create_if_block_1(ctx) {
+    	let span;
+    	let svg;
+    	let raw_value = /*iconPaths*/ ctx[8][/*icon*/ ctx[3]] + "";
+    	let svg_class_value;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			svg = svg_element("svg");
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "class", svg_class_value = /*iconClasses*/ ctx[7][/*icon*/ ctx[3]]);
+    			attr_dev(svg, "fill", "none");
+    			attr_dev(svg, "viewBox", "0 0 24 24");
+    			attr_dev(svg, "stroke", "currentColor");
+    			add_location(svg, file$1, 41, 10, 1341);
+    			attr_dev(span, "class", "mr-2");
+    			add_location(span, file$1, 40, 8, 1311);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    			append_dev(span, svg);
+    			svg.innerHTML = raw_value;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*icon*/ 8 && raw_value !== (raw_value = /*iconPaths*/ ctx[8][/*icon*/ ctx[3]] + "")) svg.innerHTML = raw_value;
+    			if (dirty & /*icon*/ 8 && svg_class_value !== (svg_class_value = /*iconClasses*/ ctx[7][/*icon*/ ctx[3]])) {
+    				attr_dev(svg, "class", svg_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(27:6) {#if closeable}",
+    		source: "(40:6) {#if icon}",
     		ctx
     	});
 
@@ -562,7 +586,7 @@ var app = (function () {
 
     function create_fragment$1(ctx) {
     	let if_block_anchor;
-    	let if_block = /*show*/ ctx[3] && create_if_block(ctx);
+    	let if_block = /*show*/ ctx[4] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -577,7 +601,7 @@ var app = (function () {
     			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*show*/ ctx[3]) {
+    			if (/*show*/ ctx[4]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -613,22 +637,39 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Alert', slots, []);
     	let { type = "info" } = $$props;
+    	let { title = "" } = $$props;
     	let { message = "" } = $$props;
-    	let { closeable = false } = $$props;
+    	let { icon = null } = $$props;
     	let show = true;
 
     	const closeAlert = () => {
-    		$$invalidate(3, show = false);
+    		$$invalidate(4, show = false);
     	};
 
     	const alertClasses = {
-    		info: "bg-blue-100 border-blue-500 text-blue-700",
-    		success: "bg-green-100 border-green-500 text-green-700",
-    		warning: "bg-yellow-100 border-yellow-500 text-yellow-700",
-    		danger: "bg-red-100 border-red-500 text-red-700"
+    		simple: "border-b-4 border-white",
+    		link: "border-2 border-purple-500",
+    		error: "border-b-4 border-red-500",
+    		success: "border-b-4 border-green-500",
+    		warning: "border-b-4 border-yellow-500",
+    		info: "border-b-4 border-blue-500"
     	};
 
-    	const writable_props = ['type', 'message', 'closeable'];
+    	const iconClasses = {
+    		check: "h-6 w-6 text-green-500",
+    		warning: "h-6 w-6 text-yellow-500",
+    		info: "h-6 w-6 text-blue-500",
+    		close: "h-6 w-6 text-red-500"
+    	};
+
+    	const iconPaths = {
+    		check: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>',
+    		warning: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4L4 20h16L12 4z" fill="none" />',
+    		info: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>',
+    		close: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'
+    	};
+
+    	const writable_props = ['type', 'title', 'message', 'icon'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Alert> was created with unknown prop '${key}'`);
@@ -636,37 +677,52 @@ var app = (function () {
 
     	$$self.$$set = $$props => {
     		if ('type' in $$props) $$invalidate(0, type = $$props.type);
-    		if ('message' in $$props) $$invalidate(1, message = $$props.message);
-    		if ('closeable' in $$props) $$invalidate(2, closeable = $$props.closeable);
+    		if ('title' in $$props) $$invalidate(1, title = $$props.title);
+    		if ('message' in $$props) $$invalidate(2, message = $$props.message);
+    		if ('icon' in $$props) $$invalidate(3, icon = $$props.icon);
     	};
 
     	$$self.$capture_state = () => ({
     		type,
+    		title,
     		message,
-    		closeable,
+    		icon,
     		show,
     		closeAlert,
-    		alertClasses
+    		alertClasses,
+    		iconClasses,
+    		iconPaths
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('type' in $$props) $$invalidate(0, type = $$props.type);
-    		if ('message' in $$props) $$invalidate(1, message = $$props.message);
-    		if ('closeable' in $$props) $$invalidate(2, closeable = $$props.closeable);
-    		if ('show' in $$props) $$invalidate(3, show = $$props.show);
+    		if ('title' in $$props) $$invalidate(1, title = $$props.title);
+    		if ('message' in $$props) $$invalidate(2, message = $$props.message);
+    		if ('icon' in $$props) $$invalidate(3, icon = $$props.icon);
+    		if ('show' in $$props) $$invalidate(4, show = $$props.show);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [type, message, closeable, show, closeAlert, alertClasses];
+    	return [
+    		type,
+    		title,
+    		message,
+    		icon,
+    		show,
+    		closeAlert,
+    		alertClasses,
+    		iconClasses,
+    		iconPaths
+    	];
     }
 
     class Alert extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { type: 0, message: 1, closeable: 2 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { type: 0, title: 1, message: 2, icon: 3 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -684,6 +740,14 @@ var app = (function () {
     		throw new Error("<Alert>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
+    	get title() {
+    		throw new Error("<Alert>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set title(value) {
+    		throw new Error("<Alert>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
     	get message() {
     		throw new Error("<Alert>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
@@ -692,11 +756,11 @@ var app = (function () {
     		throw new Error("<Alert>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get closeable() {
+    	get icon() {
     		throw new Error("<Alert>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set closeable(value) {
+    	set icon(value) {
     		throw new Error("<Alert>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -708,7 +772,7 @@ var app = (function () {
     	let link;
     	let t0;
     	let main;
-    	let h1;
+    	let h2;
     	let t2;
     	let alert0;
     	let t3;
@@ -717,38 +781,66 @@ var app = (function () {
     	let alert2;
     	let t5;
     	let alert3;
+    	let t6;
+    	let alert4;
+    	let t7;
+    	let alert5;
     	let current;
 
     	alert0 = new Alert({
     			props: {
-    				type: "info",
-    				message: "Это информационное оповещение."
+    				type: "simple",
+    				title: "ОБЫЧНЫЙ алерт",
+    				message: "ДА ЭТО обычный алерт у него даже иконки нету он парень простой но хороший"
     			},
     			$$inline: true
     		});
 
     	alert1 = new Alert({
     			props: {
-    				type: "success",
-    				message: "Это оповещение об успешном действии.",
-    				closeable: true
+    				type: "link",
+    				title: "Алерт с линкой",
+    				message: "А вот это уже не обычный алерт он с секретом (у него <a href='#' class='text-blue-500'>ссылка</a>)"
     			},
     			$$inline: true
     		});
 
     	alert2 = new Alert({
     			props: {
-    				type: "warning",
-    				message: "Это предупреждающее оповещение."
+    				type: "error",
+    				title: "САНЯ ЧТО-ТО не ТО",
+    				message: "Саня отмена САНЯ ОТМЕНА ТЕСТОВЫЙ АЛЕРТ ПОШЕЛ ПО П@#Z%",
+    				icon: "close"
     			},
     			$$inline: true
     		});
 
     	alert3 = new Alert({
     			props: {
-    				type: "danger",
-    				message: "Это оповещение об опасности.",
-    				closeable: true
+    				type: "success",
+    				title: "Успешное действие",
+    				message: "Поздравляем вы оформили кредит и устроились работать в 41Т",
+    				icon: "check"
+    			},
+    			$$inline: true
+    		});
+
+    	alert4 = new Alert({
+    			props: {
+    				type: "warning",
+    				title: "Внимание алерт",
+    				message: "Посмотрите на меня у меня недостаток внимания я привлекаю внимание",
+    				icon: "warning"
+    			},
+    			$$inline: true
+    		});
+
+    	alert5 = new Alert({
+    			props: {
+    				type: "info",
+    				title: "Синий квадрат",
+    				message: "Поздравляю это последняя фигура теперь у нас PS алерты",
+    				icon: "info"
     			},
     			$$inline: true
     		});
@@ -758,8 +850,8 @@ var app = (function () {
     			link = element("link");
     			t0 = space();
     			main = element("main");
-    			h1 = element("h1");
-    			h1.textContent = "Svelte оповещения с Tailwind CSS";
+    			h2 = element("h2");
+    			h2.textContent = "Svelte оповещения с Tailwind CSS";
     			t2 = space();
     			create_component(alert0.$$.fragment);
     			t3 = space();
@@ -768,12 +860,16 @@ var app = (function () {
     			create_component(alert2.$$.fragment);
     			t5 = space();
     			create_component(alert3.$$.fragment);
+    			t6 = space();
+    			create_component(alert4.$$.fragment);
+    			t7 = space();
+    			create_component(alert5.$$.fragment);
     			attr_dev(link, "href", "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
     			attr_dev(link, "rel", "stylesheet");
     			add_location(link, file, 4, 0, 69);
-    			attr_dev(h1, "class", "text-2xl font-bold mb-4");
-    			add_location(h1, file, 7, 2, 192);
-    			attr_dev(main, "class", "p-4");
+    			attr_dev(h2, "class", "text-white text-xl font-bold mb-4");
+    			add_location(h2, file, 7, 2, 215);
+    			attr_dev(main, "class", "bg-gray-900 p-8 rounded-lg");
     			add_location(main, file, 6, 0, 171);
     		},
     		l: function claim(nodes) {
@@ -783,7 +879,7 @@ var app = (function () {
     			insert_dev(target, link, anchor);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, main, anchor);
-    			append_dev(main, h1);
+    			append_dev(main, h2);
     			append_dev(main, t2);
     			mount_component(alert0, main, null);
     			append_dev(main, t3);
@@ -792,6 +888,10 @@ var app = (function () {
     			mount_component(alert2, main, null);
     			append_dev(main, t5);
     			mount_component(alert3, main, null);
+    			append_dev(main, t6);
+    			mount_component(alert4, main, null);
+    			append_dev(main, t7);
+    			mount_component(alert5, main, null);
     			current = true;
     		},
     		p: noop,
@@ -801,6 +901,8 @@ var app = (function () {
     			transition_in(alert1.$$.fragment, local);
     			transition_in(alert2.$$.fragment, local);
     			transition_in(alert3.$$.fragment, local);
+    			transition_in(alert4.$$.fragment, local);
+    			transition_in(alert5.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
@@ -808,6 +910,8 @@ var app = (function () {
     			transition_out(alert1.$$.fragment, local);
     			transition_out(alert2.$$.fragment, local);
     			transition_out(alert3.$$.fragment, local);
+    			transition_out(alert4.$$.fragment, local);
+    			transition_out(alert5.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -818,6 +922,8 @@ var app = (function () {
     			destroy_component(alert1);
     			destroy_component(alert2);
     			destroy_component(alert3);
+    			destroy_component(alert4);
+    			destroy_component(alert5);
     		}
     	};
 

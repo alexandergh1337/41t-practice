@@ -1,7 +1,8 @@
 <script>
   export let type = "info";
+  export let title = "";
   export let message = "";
-  export let closeable = false;
+  export let icon = null;
 
   let show = true;
 
@@ -10,27 +11,48 @@
   };
 
   const alertClasses = {
-    info: "bg-blue-100 border-blue-500 text-blue-700",
-    success: "bg-green-100 border-green-500 text-green-700",
-    warning: "bg-yellow-100 border-yellow-500 text-yellow-700",
-    danger: "bg-red-100 border-red-500 text-red-700"
+    simple: "border-b-4 border-white",
+    link: "border-2 border-purple-500",
+    error: "border-b-4 border-red-500",
+    success: "border-b-4 border-green-500",
+    warning: "border-b-4 border-yellow-500",
+    info: "border-b-4 border-blue-500",
+  };
+
+  const iconClasses = {
+    check: "h-6 w-6 text-green-500",
+    warning: "h-6 w-6 text-yellow-500",
+    info: "h-6 w-6 text-blue-500",
+    close: "h-6 w-6 text-red-500",
+  };
+
+  const iconPaths = {
+    check: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>',
+    warning: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4L4 20h16L12 4z" fill="none" />',
+    info: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>',
+    close: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'
   };
 </script>
 
 {#if show}
-  <div class="relative border-l-4 p-4 mb-4 rounded-md shadow-md {alertClasses[type]}" role="alert">
-    <div class="flex justify-between items-center">
-      <div>
-        <p class="font-bold">{type.charAt(0).toUpperCase() + type.slice(1)}</p>
-        <p>{message}</p>
-      </div>
-      {#if closeable}
-        <button on:click={closeAlert} class="text-gray-500 hover:text-gray-700 ml-4">
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M6.293 6.293a1 1 0 011.414 0L10 8.586l2.293-2.293a1 1 0 111.414 1.414L11.414 10l2.293 2.293a1 1 0 01-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 01-1.414-1.414L8.586 10 6.293 7.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+  <div class="bg-gray-800 text-white p-3 rounded-md mb-2 flex justify-between items-start {alertClasses[type]}">
+    <div class="flex items-center">
+      {#if icon}
+        <span class="mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="{iconClasses[icon]}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            {@html iconPaths[icon]}
           </svg>
-        </button>
+        </span>
       {/if}
+      <div>
+        <h3 class="text-white font-bold">{title}</h3>
+        <p class="text-gray-400">{@html message}</p>
+      </div>
     </div>
+    <button class="text-gray-400 hover:text-gray-300 bg-transparent border-none" on:click={closeAlert}>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </div>
 {/if}
