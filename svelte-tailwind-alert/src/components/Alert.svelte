@@ -1,6 +1,7 @@
 <script>
-  import { fly } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
+  import {fly} from 'svelte/transition';
+  import {cubicOut} from 'svelte/easing';
+  import {onDestroy} from 'svelte';
 
   export let type = "info";
   export let title = "";
@@ -67,20 +68,18 @@
         clearInterval(timer);
         handleClose();
       }
-    }, 10);
+    }, 100);
   };
 
   const pauseTimer = () => {
     clearInterval(timer);
   };
 
-  $: if (!isHovering) {
-    startTimer();
-  } else {
+  $: if (isHovering) {
     pauseTimer();
+  } else {
+    startTimer();
   }
-
-  import { onDestroy } from 'svelte';
 
   onDestroy(() => {
     clearInterval(timer);
@@ -120,7 +119,7 @@
 
   <button class="text-gray-400 hover:text-gray-300 bg-transparent border-none" on:click={handleClose}>
     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
     </svg>
   </button>
 

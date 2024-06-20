@@ -1,5 +1,5 @@
 <script>
-  import { writable, get } from 'svelte/store';
+  import {writable, get} from 'svelte/store';
   import Alert from './components/Alert.svelte';
 
   const notifications = writable([]);
@@ -8,7 +8,7 @@
     const id = Math.random().toString(36).substring(2, 9);
     notifications.update(allNotifications => [
       ...allNotifications,
-      { id, type, title, message, duration }
+      {id, type, title, message, duration}
     ]);
   };
 
@@ -45,28 +45,34 @@
 <main class="bg-gray-900 p-8 rounded-lg relative min-h-screen">
   <h2 class="text-white text-xl font-bold mb-4">Svelte оповещения с Tailwind CSS</h2>
 
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" on:click={() => showAlert('simple')}>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => showAlert('simple')}>
     Обычный
   </button>
-  <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2" on:click={() => showAlert('link')}>
+  <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => showAlert('link')}>
     Ссылка
   </button>
-  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2" on:click={() => showAlert('error')}>
+  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => showAlert('error')}>
     Ошибка
   </button>
-  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2" on:click={() => showAlert('success')}>
+  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => showAlert('success')}>
     Успех
   </button>
-  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2" on:click={() => showAlert('warning')}>
+  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2"
+          on:click={() => showAlert('warning')}>
     Предупреждение
   </button>
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={() => showAlert('info')}>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          on:click={() => showAlert('info')}>
     Инфо
   </button>
 
   <div class="fixed bottom-4 right-4 w-96">
     {#each $notifications as notification (notification.id)}
-      <Alert {...notification} onClose={() => removeNotification(notification.id)} />
+      <Alert {...notification} onClose={() => removeNotification(notification.id)}/>
     {/each}
   </div>
 </main>
